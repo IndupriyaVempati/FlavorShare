@@ -1,0 +1,35 @@
+/* Background for the body */
+body {
+    background-color: #eee7ee; /* Light gray background */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #c26dbc; /* Set navbar background color */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: white !important;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white !important; /* Set text color in navbar */
+    font-size: 1.2rem;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #d41c1c !important; /* Highlight color on hover */
+}
+
+/* Set navbar toggler icon color */
+.navbar-toggler-icon {
+    background-color: white;
+}
+
+/* Adjust spacing and padding for the body content */
+.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
