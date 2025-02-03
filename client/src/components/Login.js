@@ -27,6 +27,7 @@ const Login = ({ setIsAuthenticated }) => {
       navigate("/dashboard"); // Using React Router for navigation
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
+      console.error("Login error:", err.response);
     }
   };
 

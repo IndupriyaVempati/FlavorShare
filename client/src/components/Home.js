@@ -289,6 +289,8 @@ const Home = () => {
             element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
           >
             <Route path="explore" element={<RecipeList />} />
+            {/* <Route path="/dashboard/upload" element={<UploadRecipe />} /> */}
+            {/* <Route path="/dashboard/explore" element={<ExploreRecipes />} /> */}
             <Route path="upload" element={<UploadRecipe />} />
             <Route path="likedrecipes" element={<LikedRecipes />} />
           </Route>
