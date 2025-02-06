@@ -13,36 +13,29 @@ export const uploadRecipe = (data) => {
     });
 };
 
-
 export const likeRecipe = async (recipeId, token) => {
   try {
-    const response = await API.post(
+    await API.post(
       `/api/like-recipe/${recipeId}`,
       {},
       {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: token },
       }
     );
-    return response.data;
   } catch (error) {
-    console.error("API: Error liking recipe", error);
-    throw error;
+    console.error("Error liking recipe:", error);
   }
 };
 
 export const fetchLikedRecipes = async (token) => {
   try {
     const response = await API.get("/api/liked-recipes", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: token },
     });
-    return response.data;
+    return response.data; // Ensure only liked recipes are returned
   } catch (error) {
-    console.error("API: Error fetching liked recipes", error);
-    throw error;
+    console.error("Error fetching liked recipes:", error);
+    return [];
   }
 };
 

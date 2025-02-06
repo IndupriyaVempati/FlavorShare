@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { fetchRecipes, likeRecipe } from "../api";
+import { fetchRecipes, likeRecipe, fetchLikedRecipes } from "../api";
 
-const RecipeList = () => {
+const RecipeList = ({ updateLikedRecipes }) => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -14,8 +14,13 @@ const RecipeList = () => {
     const token = localStorage.getItem("token");
 
     try {
-      await likeRecipe(recipeId, token); // Pass recipe ID and token
+      await likeRecipe(recipeId, token);
       alert("Recipe liked!");
+
+      // ✅ Update liked recipes immediately
+      if (updateLikedRecipes) {
+        updateLikedRecipes();
+      }
     } catch (err) {
       console.error("Error liking recipe:", err);
     }

@@ -3,20 +3,11 @@ import { fetchLikedRecipes } from "../api";
 
 const LikedRecipes = () => {
   const [likedRecipes, setLikedRecipes] = useState([]);
-  const token = localStorage.getItem("token"); // Assuming the token is stored in localStorage
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const fetchUserLikedRecipes = async () => {
-      try {
-        const recipes = await fetchLikedRecipes(token); // Pass the token
-        setLikedRecipes(recipes);
-      } catch (err) {
-        console.error("Error fetching liked recipes:", err);
-      }
-    };
-
     if (token) {
-      fetchUserLikedRecipes();
+      fetchLikedRecipes(token).then((recipes) => setLikedRecipes(recipes));
     }
   }, [token]);
 

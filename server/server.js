@@ -53,7 +53,7 @@ const storage = multer.diskStorage({
     console.log(
       `Multer: Saving file with name ${Date.now()}-${file.originalname}`
     );
-    cb(null, Date.now() + "-" + file.originalname); // Name of the file
+    cb(null, `${Date.now()}-${file.originalname}`); // Name of the file
   },
 });
 
@@ -121,25 +121,7 @@ app.post("/api/auth/login", async (req, res) => {
   }
 });
 
-// 3. Protected Route Example (Requires Authentication)
-app.get("/api/protected", (req, res) => {
-  const token = req.headers["authorization"];
-
-  if (!token) {
-    return res.status(401).json({ message: "No token provided" });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.userId;
-    res.status(200).json({ message: "Protected data accessed" });
-  } catch (err) {
-    console.error("JWT Error:", err);
-    res.status(401).json({ message: "Invalid token" });
-  }
-});
-
-// 4. Upload Recipe
+// 3. Upload Recipe
 app.post("/recipes", upload.single("image"), async (req, res) => {
   const { title, ingredients, instructions } = req.body;
   const imagePath = req.file ? `/uploads/${req.file.filename}` : null; // Image path to be stored
@@ -159,7 +141,7 @@ app.post("/recipes", upload.single("image"), async (req, res) => {
   }
 });
 
-// 5. Get All Recipes
+// 4. Get All Recipes
 app.get("/recipes", async (req, res) => {
   try {
     const recipes = await Recipe.find();
@@ -170,7 +152,7 @@ app.get("/recipes", async (req, res) => {
   }
 });
 
-// Like a Recipe
+// 5. Like a Recipe
 app.post("/api/like-recipe/:id", async (req, res) => {
   const token = req.headers["authorization"];
   if (!token) {
@@ -182,7 +164,6 @@ app.post("/api/like-recipe/:id", async (req, res) => {
     const userId = decoded.userId;
     const recipeId = req.params.id;
 
-    // Find the recipe and add user to likedBy if not already liked
     const recipe = await Recipe.findById(recipeId);
     if (!recipe) {
       return res.status(404).json({ message: "Recipe not found" });
@@ -200,7 +181,7 @@ app.post("/api/like-recipe/:id", async (req, res) => {
   }
 });
 
-// Get Liked Recipes for Logged-in User
+// 6. Get Liked Recipes for Logged-in User
 app.get("/api/liked-recipes", async (req, res) => {
   const token = req.headers["authorization"];
   if (!token) {
@@ -211,7 +192,7 @@ app.get("/api/liked-recipes", async (req, res) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const userId = decoded.userId;
 
-    // Fetch recipes liked by the user
+    // ✅ Fetch only recipes liked by the logged-in user
     const likedRecipes = await Recipe.find({ likedBy: userId });
     res.status(200).json(likedRecipes);
   } catch (err) {
