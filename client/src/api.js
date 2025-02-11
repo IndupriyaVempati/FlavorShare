@@ -27,12 +27,25 @@ export const likeRecipe = async (recipeId, token) => {
   }
 };
 
+export const unlikeRecipe = async (recipeId, token) => {
+  try {
+    const response = await API.delete(
+      `/api/unlike-recipe/${recipeId}`,  // Ensure backend supports DELETE for unliking
+      { headers: { Authorization: token } }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error unliking recipe:", error);
+    throw error;
+  }
+};
+
 export const fetchLikedRecipes = async (token) => {
   try {
     const response = await API.get("/api/liked-recipes", {
       headers: { Authorization: token },
     });
-    return response.data; // Ensure only liked recipes are returned
+    return response.data || []; // Ensure only liked recipes are returned
   } catch (error) {
     console.error("Error fetching liked recipes:", error);
     return [];

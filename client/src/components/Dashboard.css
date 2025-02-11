@@ -1,0 +1,95 @@
+/* General container for the entire dashboard */
+.dashboard-container {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.username {
+    font-size: 1.4rem;
+    font-weight: 700; /* Make the username bold */
+    color: #333;
+    font-family: 'Helvetica Neue', sans-serif; /* Elegant font */
+    letter-spacing: 1px;
+}
+
+.header-right h2 {
+    font-size: 2rem; /* Increase size for emphasis */
+    font-weight: 700;
+    color: #333;
+    font-family: 'Georgia', serif; /* Elegant serif font for headings */
+    letter-spacing: 1px;
+}
+
+/* Main content area */
+.dashboard-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card h3 {
+    font-size: 1.6rem; /* Slightly larger for a stronger presence */
+    font-weight: 600; /* Bold but not too heavy */
+    color: #333;
+    font-family: 'Georgia', serif; /* Elegant font for the cards */
+    letter-spacing: 1px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-main {
+        grid-template-columns: 1fr;
+    }
+}

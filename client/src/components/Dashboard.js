@@ -1,3 +1,34 @@
+import "./Dashboard.css";
+import React from "react";
+import { Outlet, Link } from "react-router-dom";
+
+const Dashboard = () => {
+  return (
+    <div className="container my-5">
+      <h2 className="text-center mb-4">Welcome to Your Dashboard!</h2>
+      <div className="list-group">
+        <Link to="explore" className="list-group-item list-group-item-action">
+          Explore Recipes!
+        </Link>
+        <Link to="upload" className="list-group-item list-group-item-action">
+          Upload a Recipe!
+        </Link>
+        <Link to="likedrecipes" className="list-group-item list-group-item-action">
+          View Your Liked Recipes!
+        </Link>
+      </div>
+      {/* This Outlet will render the nested route components */}
+      <Outlet />
+    </div>
+  );
+};
+
+export default Dashboard;
+
+
+
+
+
 // import React from "react";
 // import { Link, useNavigate } from "react-router-dom";
 
@@ -265,28 +296,28 @@
 
 // export default Dashboard;
 
-import React from "react";
-import { Outlet, Link } from "react-router-dom";
+// import React from "react";
+// import { Outlet, Link } from "react-router-dom";
 
-const Dashboard = () => {
-  return (
-    <div className="container my-5">
-      <h2 className="text-center mb-4">Welcome to Your Dashboard</h2>
-      <div className="list-group">
-        <Link to="explore" className="list-group-item list-group-item-action">
-          Explore Recipes
-        </Link>
-        <Link to="upload" className="list-group-item list-group-item-action">
-          Upload a Recipe
-        </Link>
-        <Link to="likedrecipes" className="list-group-item list-group-item-action">
-          View Your Liked Recipes
-        </Link>
-      </div>
-      {/* This Outlet will render the nested route components */}
-      <Outlet />
-    </div>
-  );
-};
+// const Dashboard = () => {
+//   return (
+//     <div className="container my-5">
+//       <h2 className="text-center mb-4">Welcome to Your Dashboard</h2>
+//       <div className="list-group">
+//         <Link to="explore" className="list-group-item list-group-item-action">
+//           Explore Recipes
+//         </Link>
+//         <Link to="upload" className="list-group-item list-group-item-action">
+//           Upload a Recipe
+//         </Link>
+//         <Link to="likedrecipes" className="list-group-item list-group-item-action">
+//           View Your Liked Recipes
+//         </Link>
+//       </div>
+//       {/* This Outlet will render the nested route components */}
+//       <Outlet />
+//     </div>
+//   );
+// };
 
-export default Dashboard;
+// export default Dashboard;

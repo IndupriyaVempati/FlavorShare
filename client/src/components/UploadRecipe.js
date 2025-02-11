@@ -427,7 +427,7 @@ const UploadRecipe = () => {
 
   return (
     <div className="container my-5">
-      <h2 className="text-center mb-4">Upload a Recipe</h2>
+      <h2 className="text-center mb-4">Share your recipe! ^_^</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
