@@ -1,0 +1,221 @@
+/* ✅ Overall container */
+.container {
+    padding: 20px;
+  }
+  
+  /* ✅ Card design for each recipe */
+  .card {
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* ✅ Recipe Image */
+  .small-img {
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  
+  /* ✅ Card Body */
+  .card-body {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  /* ✅ Title */
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* ✅ Button Container */
+  .card-body button {
+    margin: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s;
+  }
+  
+  /* ✅ Light Colored Buttons */
+  .card-body button.btn-info {
+    background-color: #cce5ff;
+    color: #0056b3;
+  }
+  
+  .card-body button.btn-info:hover {
+    background-color: #b3d7ff;
+  }
+  
+  /* ✅ Unlike Button */
+  .card-body button.btn-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .card-body button.btn-danger:hover {
+    background-color: #f5c6cb;
+  }
+  
+  /* ✅ MODAL OVERLAY */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* ✅ SCROLLABLE MODAL CONTENT (WITH PREMIUM SCROLLBAR) */
+  .modal-content {
+    background-color: #fff;
+    width: 550px;
+    max-height: 80vh;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* ✅ Custom Scrollbar */
+  .modal-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .modal-content::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  .modal-content::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+  
+  .modal-content::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  
+  /* ✅ Close Button */
+  .modal-content button.btn-danger {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  /* ✅ Ingredients List */
+  .modal-content ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .modal-content ul li {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  /* ✅ Instructions List (Step-by-Step) */
+  .modal-content ol {
+    padding-left: 20px;
+  }
+  
+  .modal-content ol li {
+    font-size: 14px;
+    padding: 5px 0;
+  }
+  
+  /* ✅ AI Button Container */
+  .modal-content .ai-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  /* ✅ AI Buttons (Light Colors) */
+  .modal-content .ai-buttons button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.2s;
+    border: none;
+  }
+  
+  /* ✅ Light Color for AI Help Button */
+  .modal-content .btn-dark {
+    background-color: #e0e0e0;
+    color: #212121;
+  }
+  .modal-content .btn-warning {
+    background-color: #d4edda;
+    color: #212121;
+  }
+ 
+  
+  /* ✅ Light Green for Copy to Clipboard */
+  .modal-content .btn-primary {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .modal-content .btn-primary:hover {
+    background-color: #c3e6cb;
+  }
+  
+  /* ✅ Light Yellow for Share on WhatsApp */
+  .modal-content .btn-success {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .modal-content .btn-success:hover {
+    background-color: #ffeeba;
+  }
+  
+  /* ✅ Light Blue for Share via Email */
+  .modal-content .btn-info {
+    background-color: #cce5ff;
+    color: #004085;
+  }
+  
+  .modal-content .btn-info:hover {
+    background-color: #b8daff;
+  }
+  
+  /* ✅ Close Button (Light Red) */
+  .modal-content .btn-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .modal-content .btn-danger:hover {
+    background-color: #f5c6cb;
+  }
+  
+  /* ✅ MAX HEIGHT FOR MODAL */
+  .modal-content {
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 20px;
+  }
+  

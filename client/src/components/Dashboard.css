@@ -1,9 +1,10 @@
 /* General container for the entire dashboard */
 .dashboard-container {
-    font-family: 'Arial', sans-serif;
+    font-family:cursive;
     padding: 20px;
     display: flex;
     flex-direction: column;
+  
 }
 
 /* Header Section */
@@ -19,21 +20,6 @@
     align-items: center;
 }
 
-.profile-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 15px;
-    object-fit: cover;
-}
-
-.username {
-    font-size: 1.4rem;
-    font-weight: 700; /* Make the username bold */
-    color: #333;
-    font-family: 'Helvetica Neue', sans-serif; /* Elegant font */
-    letter-spacing: 1px;
-}
 
 .header-right h2 {
     font-size: 2rem; /* Increase size for emphasis */
@@ -47,16 +33,17 @@
 .dashboard-main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 100px;
 }
 
 .card {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
     transition: transform 0.3s ease;
+    margin:20px;
 }
 
 .card:hover {
@@ -80,6 +67,7 @@
     font-size: 1rem;
     color: #777;
     margin-top: 10px;
+    
 }
 
 /* Responsive Styles */
@@ -91,5 +79,7 @@
 
     .dashboard-main {
         grid-template-columns: 1fr;
+        
+       
     }
 }

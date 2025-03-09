@@ -6,6 +6,8 @@
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "cra-template": "1.2.0",
+    "jspdf": "^3.0.0",
+    "jspdf-autotable": "^5.0.2",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.7",
     "react-dom": "^19.0.0",

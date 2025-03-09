@@ -28,6 +28,8 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
   password: String,
+  age: Number, // ✅ Added Age
+  profileImg: String, // ✅ Added Profile Image
 });
 
 const User = mongoose.model("User", userSchema);
@@ -105,9 +107,12 @@ app.post("/api/auth/login", async (req, res) => {
     if (!user) return res.status(400).json({ message: "Invalid credentials" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
+    if (!isMatch)
+      return res.status(400).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
     res.status(200).json({ message: "Login successful", token });
   } catch (err) {
     console.error("Error during login:", err);
@@ -121,7 +126,12 @@ app.post("/recipes", upload.single("image"), async (req, res) => {
   const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
 
   try {
-    const recipe = new Recipe({ title, ingredients, instructions, image: imagePath });
+    const recipe = new Recipe({
+      title,
+      ingredients,
+      instructions,
+      image: imagePath,
+    });
     await recipe.save();
     res.status(201).json(recipe);
   } catch (error) {
@@ -223,8 +233,52 @@ app.post("/api/unlike-recipe/:id", async (req, res) => {
     res.status(500).json({ message: "Error unliking recipe" });
   }
 });
+//get-user
+app.get("/api/user/get-user", verifyToken, async (req, res) => {
+  try {
+    const userId = req.userId;
+    const user = await User.findById(userId);
 
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
+    res.status(200).json({
+      name: user.name,
+      age: user.age,
+      profileImg: user.profileImg,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch user details" });
+  }
+});
+
+// ✅ Update User Settings API
+app.post(
+  "/api/user/update-settings",
+  verifyToken,
+  upload.single("profileImg"),
+  async (req, res) => {
+    try {
+      const userId = req.userId;
+      const { name, age } = req.body;
+      const profileImg = req.file ? `/uploads/${req.file.filename}` : null;
+
+      const user = await User.findById(userId);
+      if (!user) return res.status(404).json({ message: "User not found" });
+
+      // ✅ Update Fields
+      user.name = name || user.name;
+      user.age = age || user.age;
+      if (profileImg) user.profileImg = profileImg;
+
+      await user.save();
+      res.status(200).json({ message: "Profile updated successfully", user });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to update profile" });
+    }
+  }
+);
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
