@@ -30,7 +30,7 @@ export const likeRecipe = async (recipeId, token) => {
 export const unlikeRecipe = async (recipeId, token) => {
   try {
     const response = await API.delete(
-      `/api/unlike-recipe/${recipeId}`,  // Ensure backend supports DELETE for unliking
+      `/api/unlike-recipe/${recipeId}`, // Ensure backend supports DELETE for unliking
       { headers: { Authorization: token } }
     );
     return response.data;

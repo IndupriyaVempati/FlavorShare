@@ -3,30 +3,53 @@ import React from "react";
 import { Outlet, Link } from "react-router-dom";
 
 const Dashboard = () => {
+ 
+
   return (
-    <div className="container my-5">
-      <h2 className="text-center mb-4">Welcome to Your Dashboard!</h2>
-      <div className="list-group">
-        <Link to="explore" className="list-group-item list-group-item-action">
-          Explore Recipes!
+    <div className="dashboard-container">
+      {/* Header Section */}
+      <div className="header">
+        <div className="header-left">
+          <div>
+            <p className="greeting">Welcome Back,</p>
+          </div>
+        </div>
+
+        <div className="header-right">
+          <h2>🍲 Your Personal Recipe Hub</h2>
+          <p>Explore, Upload, and Save your favorite recipes!</p>
+        </div>
+      </div>
+
+      {/* Main Content Section */}
+      <div className="dashboard-main">
+        <Link to="/dashboard/explore" className="card card-link">
+          <h3>🔍 Explore Recipes</h3>
+          <p>Discover delicious recipes shared by others.</p>
         </Link>
-        <Link to="upload" className="list-group-item list-group-item-action">
-          Upload a Recipe!
+
+        <Link to="/dashboard/upload" className="card card-link">
+          <h3>🍳 Upload a Recipe</h3>
+          <p>Share your own special recipes with the world.</p>
         </Link>
-        <Link to="likedrecipes" className="list-group-item list-group-item-action">
-          View Your Liked Recipes!
+
+        <Link to="/dashboard/likedrecipes" className="card card-link">
+          <h3>❤️ View Liked Recipes</h3>
+          <p>See the recipes you loved the most.</p>
         </Link>
       </div>
-      {/* This Outlet will render the nested route components */}
-      <Outlet />
+
+      {/* 🚀 THIS IS WHERE OUTLET WILL WORK */}
+      <div className="outlet-content">
+        <Outlet />
+      </div>
+
+      
     </div>
   );
 };
 
 export default Dashboard;
-
-
-
 
 
 // import React from "react";

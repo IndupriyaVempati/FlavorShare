@@ -4,6 +4,7 @@ import { FaUtensils } from "react-icons/fa";
 import { Carousel, Card, Button, Row, Col } from "react-bootstrap";
 import RecipeList from "./RecipeList";
 import UploadRecipe from "./UploadRecipe";
+
 import Register from "./Register";
 import Login from "./Login";
 import LikedRecipes from "./LikedRecipes";
@@ -17,29 +18,35 @@ const Home = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
-  // Check for authentication status on page load
+  // Check if user is logged in
   useEffect(() => {
     const loggedIn = localStorage.getItem("isAuthenticated") === "true";
     setIsAuthenticated(loggedIn);
   }, []);
 
-  // Logout function
+  // Handle Logout Function
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Clear the token
-    localStorage.setItem("isAuthenticated", "false"); // Update the authentication status
-    setIsAuthenticated(false); // Update the state to reflect the logout
-    navigate("/"); // Redirect to the home page
+    localStorage.removeItem("token");
+    localStorage.setItem("isAuthenticated", "false");
+    setIsAuthenticated(false);
+    navigate("/");
   };
 
   return (
     <div>
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg ">
+      {/* ====================== NAVBAR ====================== */}
+      <nav className="navbar navbar-expand-lg custom-navbar">
         <div className="container-fluid">
-          <Link className="navbar-brand d-flex align-items-center" to="/">
-            <FaUtensils className="me-2" size={30} />
-            <span className="fs-4">FlavorShare</span>
+          {/* Brand Logo */}
+          <Link
+            className="navbar-brand d-flex align-items-center brand-logo"
+            to="/"
+          >
+            <FaUtensils className="me-2 icon-glow" size={30} />
+            <span className="fs-4 brand-text">FlavorShare</span>
           </Link>
+
+          {/* Toggle Button */}
           <button
             className="navbar-toggler"
             type="button"
@@ -51,36 +58,72 @@ const Home = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
+          {/* Navbar Links */}
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
+              {/* Home Link */}
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <Link
+                  className={`nav-link ${
+                    window.location.pathname === "/" ? "active-link" : ""
+                  }`}
+                  to="/"
+                >
                   Home
                 </Link>
               </li>
+
+              {/* If NOT Authenticated */}
               {!isAuthenticated && (
                 <>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/register">
+                    <Link
+                      className={`nav-link ${
+                        window.location.pathname === "/register"
+                          ? "active-link"
+                          : ""
+                      }`}
+                      to="/register"
+                    >
                       Register
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/login">
+                    <Link
+                      className={`nav-link ${
+                        window.location.pathname === "/login"
+                          ? "active-link"
+                          : ""
+                      }`}
+                      to="/login"
+                    >
                       Login
                     </Link>
                   </li>
                 </>
               )}
+
+              {/* If Authenticated */}
               {isAuthenticated && (
                 <>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/dashboard">
+                    <Link
+                      className={`nav-link ${
+                        window.location.pathname === "/dashboard"
+                          ? "active-link"
+                          : ""
+                      }`}
+                      to="/dashboard"
+                    >
                       Dashboard
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <button className="nav-link btn" onClick={handleLogout}>
+                    <button
+                      className="nav-link logout-btn btn"
+                      onClick={handleLogout}
+                    >
                       Logout
                     </button>
                   </li>
@@ -92,61 +135,73 @@ const Home = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="container my-5">
+      <main>
         <Routes>
           <Route
             path="/"
             element={
               <>
                 {/* Carousel */}
-                <Carousel>
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100 img-fluid"
-                      src={Sfood}
-                      alt="North Indian Food"
-                      style={{ height: "400px", objectFit: "contain" }}
-                    />
-                    <Carousel.Caption>
-                      <h3>Delicious North Indian Food</h3>
-                      <p>Explore the rich flavors of India!</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100 img-fluid"
-                      src={Nfood}
-                      alt="South Indian Food"
-                      style={{ height: "400px", objectFit: "contain" }}
-                    />
-                    <Carousel.Caption>
-                      <h3>Yummy South Indian Delights</h3>
-                      <p>Spicy and savory dishes to savor!</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100 img-fluid"
-                      src={Jfood}
-                      alt="Junk Food"
-                      style={{ height: "400px", objectFit: "contain" }}
-                    />
-                    <Carousel.Caption>
-                      <h3>Scrumptious Junk Food</h3>
-                      <p>The ultimate comfort food!</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                </Carousel>
+
+                <div className="carousel-container">
+                  <Carousel interval={3000} fade>
+                    {/* North Indian Food */}
+                    <Carousel.Item>
+                      <img
+                        className="d-block w-100 food-image"
+                        src={Sfood}
+                        alt="North Indian Food"
+                      />
+                      <div className="food-caption">
+                        <h3>🍲 Delicious North Indian Food</h3>
+                        <p>
+                          Explore the rich and authentic flavors of North India.
+                        </p>
+                      </div>
+                    </Carousel.Item>
+
+                    {/* South Indian Food */}
+                    <Carousel.Item>
+                      <img
+                        className="d-block w-100 food-image"
+                        src={Nfood}
+                        alt="South Indian Food"
+                      />
+                      <div className="food-caption">
+                        <h3>🍛 Yummy South Indian Delights</h3>
+                        <p>Spicy, savory, and flavorful dishes to savor!</p>
+                      </div>
+                    </Carousel.Item>
+
+                    {/* Junk Food */}
+                    <Carousel.Item>
+                      <img
+                        className="d-block w-100 food-image"
+                        src={Jfood}
+                        alt="Junk Food"
+                      />
+                      <div className="food-caption">
+                        <h3>🍔 Scrumptious Junk Food</h3>
+                        <p>Your guilty pleasure, comfort food at its finest.</p>
+                      </div>
+                    </Carousel.Item>
+                  </Carousel>
+                </div>
 
                 {/* Welcome Section */}
-                <h1 className="text-center my-4">Welcome to FlavorShare</h1>
-                <p className="text-center mb-5">
-                  Discover the best recipes, explore new flavors, and enjoy
-                  cooking like never before!
-                </p>
+                <div className="text-center my-5">
+                  <h1 className="gradient-text animate-fade-in">
+                    🍲 Welcome to FlavorShare 🍲
+                  </h1>
+                  <p className="description animate-fade-in-delay">
+                    Discover mouth-watering recipes, explore new flavors, and
+                    enjoy the art of cooking like never before!
+                  </p>
+                </div>
                 {/* Cooking Tips Section */}
                 <h2 className="text-center mt-5 mb-4">Top Cooking Tips</h2>
                 <Row xs={1} md={2} lg={3} className="g-4">
+                  {/* ================ CARD 1 ================ */}
                   <Col>
                     <Card className="h-100 shadow-lg">
                       <Card.Body>
@@ -155,52 +210,152 @@ const Home = () => {
                           Learn the secrets to creating a perfectly balanced
                           curry every time. Pro tips for flavor layering.
                         </Card.Text>
+
+                        {/* EXPANDABLE SECTION */}
+                        <div id="curry-more" style={{ display: "none" }}>
+                          <hr />
+                          <p>
+                            <b>Extra Tips:</b> Always roast your spices in low
+                            flame to extract maximum aroma.
+                          </p>
+                          <p>
+                            <b>Ingredients:</b>
+                          </p>
+                          <ul>
+                            <li>2 Onions (chopped)</li>
+                            <li>3 Tomatoes (chopped)</li>
+                            <li>2 tbsp Oil</li>
+                            <li>Spices (as per taste)</li>
+                          </ul>
+                        </div>
+
+                        {/* DYNAMIC BUTTON */}
                         <Button
                           style={{
-                            backgroundColor: "#603f8b",
-                            borderColor: "#603f8b",
+                            backgroundColor: "#ff4500",
+                            borderColor: "#ff4500",
                             color: "white",
                           }}
+                          onClick={() => {
+                            const content =
+                              document.getElementById("curry-more");
+                            const button = document.getElementById("curry-btn");
+                            if (content.style.display === "none") {
+                              content.style.display = "block";
+                              button.innerText = "Read Less";
+                            } else {
+                              content.style.display = "none";
+                              button.innerText = "Read More";
+                            }
+                          }}
+                          id="curry-btn"
                         >
                           Read More
                         </Button>
                       </Card.Body>
                     </Card>
                   </Col>
+
+                  {/* ================ CARD 2 ================ */}
                   <Col>
                     <Card className="h-100 shadow-lg">
                       <Card.Body>
                         <Card.Title>Quick Knife Skills</Card.Title>
                         <Card.Text>
-                          Save time in the kitchen with these essential knife
-                          skills. Chop like a pro!
+                          Save time in the kitchen with essential knife skills.
+                          Chop like a pro!
                         </Card.Text>
+
+                        {/* EXPANDABLE SECTION */}
+                        <div id="knife-more" style={{ display: "none" }}>
+                          <hr />
+                          <p>
+                            <b>Pro Tip:</b> Always use a sharp knife for fast
+                            chopping.
+                          </p>
+                          <p>
+                            <b>Recommended Tools:</b>
+                          </p>
+                          <ul>
+                            <li>Sharp Knife</li>
+                            <li>Cutting Board</li>
+                            <li>Fresh Vegetables</li>
+                          </ul>
+                        </div>
+
+                        {/* DYNAMIC BUTTON */}
                         <Button
                           style={{
-                            backgroundColor: "#603f8b",
-                            borderColor: "#603f8b",
+                            backgroundColor: "#ff4500",
+                            borderColor: "#ff4500",
                             color: "white",
                           }}
+                          onClick={() => {
+                            const content =
+                              document.getElementById("knife-more");
+                            const button = document.getElementById("knife-btn");
+                            if (content.style.display === "none") {
+                              content.style.display = "block";
+                              button.innerText = "Read Less";
+                            } else {
+                              content.style.display = "none";
+                              button.innerText = "Read More";
+                            }
+                          }}
+                          id="knife-btn"
                         >
                           Read More
                         </Button>
                       </Card.Body>
                     </Card>
                   </Col>
+
+                  {/* ================ CARD 3 ================ */}
                   <Col>
                     <Card className="h-100 shadow-lg">
                       <Card.Body>
                         <Card.Title>Perfect Rice Every Time</Card.Title>
                         <Card.Text>
-                          Struggling with sticky rice? Here’s the method to cook
-                          perfect, fluffy rice every time.
+                          Struggling with sticky rice? Learn the best method.
                         </Card.Text>
+
+                        {/* EXPANDABLE SECTION */}
+                        <div id="rice-more" style={{ display: "none" }}>
+                          <hr />
+                          <p>
+                            <b>Pro Tip:</b> Always rinse rice before cooking for
+                            fluffy grains.
+                          </p>
+                          <p>
+                            <b>Ingredients:</b>
+                          </p>
+                          <ul>
+                            <li>1 cup Basmati Rice</li>
+                            <li>2 cups Water</li>
+                            <li>Salt (optional)</li>
+                          </ul>
+                        </div>
+
+                        {/* DYNAMIC BUTTON */}
                         <Button
                           style={{
-                            backgroundColor: "#603f8b",
-                            borderColor: "#603f8b",
+                            backgroundColor: "#ff4500",
+                            borderColor: "#ff4500",
                             color: "white",
                           }}
+                          onClick={() => {
+                            const content =
+                              document.getElementById("rice-more");
+                            const button = document.getElementById("rice-btn");
+                            if (content.style.display === "none") {
+                              content.style.display = "block";
+                              button.innerText = "Read Less";
+                            } else {
+                              content.style.display = "none";
+                              button.innerText = "Read More";
+                            }
+                          }}
+                          id="rice-btn"
                         >
                           Read More
                         </Button>
@@ -295,21 +450,22 @@ const Home = () => {
             <Route path="likedrecipes" element={<LikedRecipes />} />
           </Route>
         </Routes>
-      </div>
+      </main>
 
       {/* Footer */}
-      <footer className="bg-dark text-white text-center py-4 mt-5">
-        <p className="m-0">
-          <span className="fs-5">FlavorShare</span> | Delicious Recipes Just a
-          Click Away!
-        </p>
-        <p className="m-0">
-          Follow us on{" "}
-          <a href="#" className="text-white">
-            Instagram
-          </a>
-        </p>
-        <p className="m-0">&copy; 2025 FlavorShare. All Rights Reserved.</p>
+      <footer className="custom-footer mt-5">
+        <div className="footer-container">
+          {/* Logo Section */}
+          <div className="footer-logo">
+            <h3>🍳 FlavorShare</h3>
+            <p>Delicious Recipes Just a Click Away!</p>
+          </div>
+
+          {/* Copyright */}
+          <div className="footer-copyright">
+            <p>&copy; 2025 FlavorShare. All Rights Reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );

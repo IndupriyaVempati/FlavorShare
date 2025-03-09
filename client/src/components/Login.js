@@ -67,8 +67,8 @@ const Login = ({ setIsAuthenticated }) => {
                   type="submit"
                   className="btn w-100"
                   style={{
-                    backgroundColor: "#603f8b",
-                    borderColor: "#603f8b",
+                    backgroundColor: "#ff4500",
+                    borderColor: "#ff4500",
                     color: "white",
                   }}
                 >
