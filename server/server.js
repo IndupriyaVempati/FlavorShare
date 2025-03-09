@@ -11,7 +11,11 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://flavorshare.vercel.app"],
+  })
+);
 app.use("/uploads", express.static("uploads"));
 
 // MongoDB Connection
