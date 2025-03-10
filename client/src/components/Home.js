@@ -81,8 +81,8 @@ const Home = () => {
                   <li className="nav-item">
                     <Link
                       className={`nav-link ${window.location.pathname === "/register"
-                          ? "active-link"
-                          : ""
+                        ? "active-link"
+                        : ""
                         }`}
                       to="/register"
                     >
@@ -92,8 +92,8 @@ const Home = () => {
                   <li className="nav-item">
                     <Link
                       className={`nav-link ${window.location.pathname === "/login"
-                          ? "active-link"
-                          : ""
+                        ? "active-link"
+                        : ""
                         }`}
                       to="/login"
                     >
@@ -109,8 +109,8 @@ const Home = () => {
                   <li className="nav-item">
                     <Link
                       className={`nav-link ${window.location.pathname === "/dashboard"
-                          ? "active-link"
-                          : ""
+                        ? "active-link"
+                        : ""
                         }`}
                       to="/dashboard"
                     >
@@ -455,7 +455,13 @@ const Home = () => {
         <div className="footer-container">
           {/* Logo Section */}
           <div className="footer-logo">
-            <h3>🍳 FlavorShare</h3>
+            <Link
+              className="navbar-brand d-flex align-items-center brand-logo"
+              to="/"
+            >
+              <FaUtensils className="me-2 icon-glow" size={30} />
+              <span className="fs-4 brand-text">FlavorShare</span>
+            </Link>
             <p>Delicious Recipes Just a Click Away!</p>
           </div>
 
