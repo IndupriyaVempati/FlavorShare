@@ -79,7 +79,7 @@ const RecipeList = ({ updateLikedRecipes }) => {
     <div className="container">
       {/* ✅ Heading with Search Bar */}
       <div className="d-flex justify-content-between align-items-center my-4">
-        <h2 className="text-center">🌍 World of RECIPES!</h2>
+        <h2 className="text-center text-white">🌍 World of RECIPES!</h2>
 
         {/* ✅ Search Bar */}
         <input

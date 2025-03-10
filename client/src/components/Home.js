@@ -9,10 +9,12 @@ import Register from "./Register";
 import Login from "./Login";
 import LikedRecipes from "./LikedRecipes";
 import Sfood from "../images/northindianfood.webp";
-import Nfood from "../images/southindianfood.jpeg";
-import Jfood from "../images/junkfood.jpeg";
+import Nfood from "../images/southindianfood.jpg";
+import Jfood from "../images/junkfood.jpg";
 import Dashboard from "./Dashboard";
 import "./Home.css";
+
+
 
 const Home = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -65,9 +67,8 @@ const Home = () => {
               {/* Home Link */}
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${
-                    window.location.pathname === "/" ? "active-link" : ""
-                  }`}
+                  className={`nav-link ${window.location.pathname === "/" ? "active-link" : ""
+                    }`}
                   to="/"
                 >
                   Home
@@ -79,11 +80,10 @@ const Home = () => {
                 <>
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${
-                        window.location.pathname === "/register"
-                          ? "active-link"
-                          : ""
-                      }`}
+                      className={`nav-link ${window.location.pathname === "/register"
+                        ? "active-link"
+                        : ""
+                        }`}
                       to="/register"
                     >
                       Register
@@ -91,11 +91,10 @@ const Home = () => {
                   </li>
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${
-                        window.location.pathname === "/login"
-                          ? "active-link"
-                          : ""
-                      }`}
+                      className={`nav-link ${window.location.pathname === "/login"
+                        ? "active-link"
+                        : ""
+                        }`}
                       to="/login"
                     >
                       Login
@@ -109,11 +108,10 @@ const Home = () => {
                 <>
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${
-                        window.location.pathname === "/dashboard"
-                          ? "active-link"
-                          : ""
-                      }`}
+                      className={`nav-link ${window.location.pathname === "/dashboard"
+                        ? "active-link"
+                        : ""
+                        }`}
                       to="/dashboard"
                     >
                       Dashboard
@@ -189,21 +187,21 @@ const Home = () => {
                 </div>
 
                 {/* Welcome Section */}
-                <div className="text-center my-5">
-                  <h1 className="gradient-text animate-fade-in">
+                <div className="text-center my-5 text-white">
+                  <h1 className="gradient-text animate-fade-in text-white">
                     🍲 Welcome to FlavorShare 🍲
                   </h1>
-                  <p className="description animate-fade-in-delay">
-                    Discover mouth-watering recipes, explore new flavors, and
-                    enjoy the art of cooking like never before!
+                  <p className="description animate-fade-in-delay text-white">
+                    Discover mouth-watering recipes, explore new flavors, and enjoy the art of cooking like never before!
                   </p>
                 </div>
-                {/* Cooking Tips Section */}
-                <h2 className="text-center mt-5 mb-4">Top Cooking Tips</h2>
+
+                <h2 className="text-center mt-5 mb-4 text-white">Top Cooking Tips</h2>
+
                 <Row xs={1} md={2} lg={3} className="g-4">
                   {/* ================ CARD 1 ================ */}
                   <Col>
-                    <Card className="h-100 shadow-lg">
+                    <Card className="h-100 shadow-lg dashy">
                       <Card.Body>
                         <Card.Title>How to Perfect Your Curry</Card.Title>
                         <Card.Text>
@@ -258,7 +256,7 @@ const Home = () => {
 
                   {/* ================ CARD 2 ================ */}
                   <Col>
-                    <Card className="h-100 shadow-lg">
+                    <Card className="h-100 shadow-lg dashy">
                       <Card.Body>
                         <Card.Title>Quick Knife Skills</Card.Title>
                         <Card.Text>
@@ -312,7 +310,7 @@ const Home = () => {
 
                   {/* ================ CARD 3 ================ */}
                   <Col>
-                    <Card className="h-100 shadow-lg">
+                    <Card className="h-100 shadow-lg dashy">
                       <Card.Body>
                         <Card.Title>Perfect Rice Every Time</Card.Title>
                         <Card.Text>
@@ -365,12 +363,12 @@ const Home = () => {
                 </Row>
 
                 {/* Food Facts Section */}
-                <h2 className="text-center mt-5 mb-4">
+                <h2 className="text-center mt-5 mb-4 text-white">
                   Interesting Food Facts
                 </h2>
                 <Row xs={1} md={2} lg={3} className="g-4">
                   <Col>
-                    <Card className="h-100 shadow-lg">
+                    <Card className="h-100 shadow-lg dashy">
                       <Card.Body>
                         <Card.Title>Did You Know?</Card.Title>
                         <Card.Text>
@@ -382,7 +380,7 @@ const Home = () => {
                     </Card>
                   </Col>
                   <Col>
-                    <Card className="h-100 shadow-lg">
+                    <Card className="h-100 shadow-lg dashy">
                       <Card.Body>
                         <Card.Title>Did You Know?</Card.Title>
                         <Card.Text>
@@ -393,7 +391,7 @@ const Home = () => {
                     </Card>
                   </Col>
                   <Col>
-                    <Card className="h-100 shadow-lg">
+                    <Card className="h-100 shadow-lg dashy">
                       <Card.Body>
                         <Card.Title>Did You Know?</Card.Title>
                         <Card.Text>
@@ -457,13 +455,19 @@ const Home = () => {
         <div className="footer-container">
           {/* Logo Section */}
           <div className="footer-logo">
-            <h3>🍳 FlavorShare</h3>
+            <Link
+              className="navbar-brand d-flex align-items-center brand-logo"
+              to="/"
+            >
+              <FaUtensils className="me-2 icon-glow" size={30} />
+              <span className="fs-4 brand-text">FlavorShare</span>
+            </Link>
             <p>Delicious Recipes Just a Click Away!</p>
           </div>
 
           {/* Copyright */}
           <div className="footer-copyright">
-            <p>&copy; 2025 FlavorShare. All Rights Reserved.</p>
+            <p className="text-white">&copy; 2025 FlavorShare. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
