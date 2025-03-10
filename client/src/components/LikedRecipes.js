@@ -96,7 +96,7 @@ const LikedRecipes = () => {
 
   return (
     <div className="container">
-      <h2 className="text-center my-4">❤️ Your Liked Recipes :)</h2>
+      <h2 className="text-center my-4 text-white">❤️ Your Liked Recipes :)</h2>
 
       <div className="row">
         {likedRecipes.map((recipe) => (

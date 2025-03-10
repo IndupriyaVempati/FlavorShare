@@ -1,10 +1,28 @@
 /* Background for the body */
 body {
-    background-image: url('../images/bg_food.jpg'); /* Replace with your image */
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family:cursive;
+  background-image: url('../images/bg_food.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  font-family: cursive;
+  background-color: #482e69;
+  position: relative;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  font-family: 'Poppins', sans-serif; /* Use your chosen font */  
 }
+
+body::before {
+  content: "";
+  position: fixed; /* Fixed prevents scrolling issues */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Ensures it covers the full width */
+  height: 100vh; /* Ensures it covers the full height */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
 
 /* =================== NAVBAR CONTAINER =================== */
 .custom-navbar {
@@ -14,14 +32,14 @@ body {
     padding: 15px 30px;
     transition: all 0.3s ease-in-out;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-bottom: 4px solid black;
   }
   
   /* =================== BRAND LOGO =================== */
   .brand-logo {
     display: flex;
     align-items: center;
-   
-    
+
   }
   
   .icon-glow {
@@ -88,22 +106,24 @@ body {
       opacity: 1;
     }
   }
+
   /* =================== CAROUSEL CONTAINER =================== */
 .carousel-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 30px 0;
-  }
-  
-  /* =================== FOOD IMAGES =================== */
-  .food-image {
-    height: 450px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.5s ease-in-out, box-shadow 0.5s;
-    cursor: pointer;
-  }
+  width: 85%;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+/* Ensure images take full width */
+.food-image {
+  width: 100%;
+  height: 90vh; /* Maintain aspect ratio */
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s;
+  cursor: pointer;
+}
+
   
   /* =================== ZOOM EFFECT ON HOVER =================== */
   .food-image:hover {
@@ -182,7 +202,10 @@ main{
 
 
 /* Card Shadows for better UI */
-.card {
+.dashy {
+  margin: 0px 20px;
+}
+.card { 
     transition: transform 0.3s;
 }
 
@@ -207,6 +230,7 @@ button:hover {
     padding: 10px 0;
     text-align: center;
     margin-top: 10px;
+    border: 4px solid black;
   }
   
   .footer-container {
