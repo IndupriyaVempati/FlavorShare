@@ -104,7 +104,7 @@ const LikedRecipes = () => {
           <div key={recipe._id} className="col-md-4 mb-3">
             <div className="card small-card">
               <img
-                src={`https://flavorshare.onrender.com${recipe.image}`}
+                src={`http://localhost:5000/uploads${recipe.image}`}
                 alt={recipe.title}
                 className="card-img-top small-img"
               />

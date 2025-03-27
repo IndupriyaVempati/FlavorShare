@@ -100,7 +100,7 @@ const RecipeList = ({ updateLikedRecipes }) => {
                 {/* ✅ SMALLER IMAGE SIZE */}
                 {recipe.image && (
                   <img
-                    src={`https://flavorshare.onrender.com${recipe.image}`}
+                    src={`https://flavorshare.onrender.com/uploads${recipe.image}`}
                     alt={recipe.title}
                     className="card-img-top"
                     style={{
