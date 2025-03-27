@@ -7,7 +7,8 @@ import "./LikedRecipes.css";
 const unlikeRecipe = async (token, recipeId) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/unlike-recipe/${recipeId}`,
+      // `http://localhost:5000/api/unlike-recipe/${recipeId}`,
+      `https://flavorshare.onrender.com/api/unlike-recipe/${recipeId}`,
       {
         method: "POST",
         headers: {
@@ -103,7 +104,7 @@ const LikedRecipes = () => {
           <div key={recipe._id} className="col-md-4 mb-3">
             <div className="card small-card">
               <img
-                src={`http://localhost:5000${recipe.image}`}
+                src={`https://flavorshare.onrender.com${recipe.image}`}
                 alt={recipe.title}
                 className="card-img-top small-img"
               />
