@@ -18,7 +18,6 @@ app.use(
     credentials: true,
   })
 );
-app.use("/uploads", express.static("uploads"));
 
 // MongoDB Connection
 mongoose
@@ -29,11 +28,7 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
 
-app.use("/uploads", express.static(path.join(__dirname, "server", "uploads")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-});
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // User Schema
 const userSchema = new mongoose.Schema({
@@ -295,6 +290,11 @@ app.post(
     }
   }
 );
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
+
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
