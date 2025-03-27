@@ -30,11 +30,11 @@ mongoose
   .catch((err) => console.error("MongoDB Connection Error:", err));
 
 // Serve React static files
-app.use(express.static(path.join(__dirname, "frontend", "build")));
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 // Fallback for React Router
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 // User Schema
