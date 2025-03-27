@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // Create an axios instance with the base URL for the API
-const API = axios.create({ baseURL: "http://localhost:5000" });
-
+// const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({ baseURL: "https://flavorshare.onrender.com" });
 export const uploadRecipe = (data) => {
   console.log("API: Uploading recipe with data:", data);
   return API.post("/recipes", data)

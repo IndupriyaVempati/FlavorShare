@@ -13,7 +13,9 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    // origin: ["http://localhost:3000"],
+    origin: ["https://flavorshare-1.onrender.com"],
+    credentials: true,
   })
 );
 app.use("/uploads", express.static("uploads"));
