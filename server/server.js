@@ -75,6 +75,10 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
+
 // API Endpoints
 
 // 1. User Registration
